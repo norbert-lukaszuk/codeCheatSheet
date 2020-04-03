@@ -7,14 +7,27 @@ html{
     
 }
 body{
-    /* background-color: #000000;
-    color: green; */
+    background-color: #000000; 
+    color: #ffffff
+}
+.main__header{
+    text-align: center;
 }
 .main__wraper{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    column-gap: 18px;
+    row-gap: 10px;
+    margin: 0 15px;
+    /* display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: column; */
+}
+.section__header{
+    /* font-size: 1.438rem; */
+    border-bottom: 1px solid #f8f8f8;
 }
 .vsShortCut__list{
     list-style: none;
