@@ -1,0 +1,22 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+html{
+    font-family: 'Oswald', sans-serif;
+    
+}
+body{
+    /* background-color: #000000;
+    color: green; */
+}
+.main__wraper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.vsShortCut__list{
+    list-style: none;
+    padding: 20px 0;
+}
