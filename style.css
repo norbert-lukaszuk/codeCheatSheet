@@ -10,6 +10,23 @@ body{
     background-color: #000000; 
     color: #ffffff
 }
+.input__form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.input__form input[type="submit"]{
+    display: block;
+    margin-top: 10px;
+    width: 60%;
+    
+}
+.input__form input[type="text"]{
+    display: block;
+    margin-top: 10px;
+    
+}
 .main__header{
     text-align: center;
 }

@@ -18,6 +18,7 @@
                     <li class="shortCut__item"><b>!+Enter</b> - Build empty html tamplate</li>
                     <li class="shortCut__item"><b>Ctrl+Shift+Enter</b> - Insert line above</li>
                     <li class="shortCut__item"><b>Alt+Up/Down</b> - Move line up or down</li>
+                    <li class="shortCut__item"><b>Click+Ctrl+C</b> - Copy line (empty selection)</li>
                     <li class="shortCut__item"><b>Shift+Alt+Up/Down</b> - Copy line up or down</li>
                     <li class="shortCut__item"><b>Crtl+Up/Down</b> - Scroll line up or down</li>
                     <li class="shortCut__item"><b>Alt+PgUp/PgDown</b> - Scroll whole page up or down</li>
@@ -43,6 +44,14 @@
 
                 </ul>
             </div>
+    </section>
+    <section class="form__section">
+        <h3 class="section__header">Input new shortcut</h3>
+        <form class="input__form" id="input__form">
+            <input type="text" name="input__keys" id="input__keys" placeholder="Keys combination">
+            <input type="text" name="input__description" id="input__description" placeholder="Description">
+            <input type="submit" value="Save" id="submit__button">
+        </form>
     </section>
 </div>
 <script src="script.js"></script>
