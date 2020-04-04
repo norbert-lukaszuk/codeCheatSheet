@@ -16,15 +16,31 @@ body{
     justify-content: center;
     align-items: center;
 }
+input::placeholder{
+    text-align: center;
+}
 .input__form input[type="submit"]{
     display: block;
     margin-top: 10px;
     width: 60%;
+    background: none;
+    border: none;
+    background-color: #ffffff;
+    padding: 7px;
+    border-radius: 3px;
+    font-weight: 600;
     
 }
 .input__form input[type="text"]{
     display: block;
+    color: #ffffff;
     margin-top: 10px;
+    background: none;
+    border: none;
+    border: 1px solid #ffffff;
+    border-radius: 3px;
+    width: 80%;
+    padding: 7px;
     
 }
 .main__header{
@@ -45,6 +61,10 @@ body{
 .section__header{
     /* font-size: 1.438rem; */
     border-bottom: 1px solid #f8f8f8;
+}
+.shortCut__item{
+    letter-spacing: 2px;
+    
 }
 .vsShortCut__list{
     list-style: none;

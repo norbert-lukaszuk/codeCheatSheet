@@ -34,13 +34,13 @@
                 <ul class="vsShortCut__list" id="vsShortCut__list">
                     <li class="shortCut__item"><b>Ctrl+G</b> - Go to line</li>
                     <li class="shortCut__item"><b>Ctrl+P</b> - Got to file</li>
+                    <li class="shortCut__item"><b>Ctrl+Tab</b> - Switch between editors</li>
                     <li class="shortCut__item"><b>Alt+Left/Right</b> - Go back/fowar</li>
                     <li class="shortCut__item"><b>Ctrl+F</b> - Find</li>
                     <li class="shortCut__item"><b>Ctrl+H</b> - Replace</li>
                     <li class="shortCut__item"><b>Alt+Click</b> - Insert cursor</li>
                     <li class="shortCut__item"><b>Crtl+Alt+Up/Down</b> - Insert cursor line above/below</li>
                     <li class="shortCut__item"><b>Ctrl+Space</b> - Sugestions</li>
-                    <li class="shortCut__item"><b>Ctrl+Shift+Space</b> - Parameter hints</li>
 
                 </ul>
             </div>
@@ -57,13 +57,37 @@
     </section>
     <section class="form__section">
         <h3 class="section__header">Input new shortcut</h3>
-        <form class="input__form" id="input__form">
-            <input type="text" name="input__keys" id="input__keys" placeholder="Keys combination">
-            <input type="text" name="input__description" id="input__description" placeholder="Description">
-            <input type="submit" value="Save" id="submit__button">
-        </form>
+        <div class="input__wraper" id="input__wraper">
+            <form class="input__form" id="input__form">
+                <input type="text" name="input__keys" id="input__keys" placeholder="Keys combination">
+                <input type="text" name="input__description" id="input__description" placeholder="Description">
+                <input type="submit" value="Save" id="submit__button">
+            </form>
+    </div>
     </section>
 </div>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDzvO7xqa9bwmCF5fRwX3fcRMME7pjyOmk",
+    authDomain: "codecheatsheet-7d13a.firebaseapp.com",
+    databaseURL: "https://codecheatsheet-7d13a.firebaseio.com",
+    projectId: "codecheatsheet-7d13a",
+    storageBucket: "codecheatsheet-7d13a.appspot.com",
+    messagingSenderId: "147725314310",
+    appId: "1:147725314310:web:fe8f5a82f5a9c04c685687"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
 <script src="script.js"></script>
 </body>
 </html>

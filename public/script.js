@@ -2,8 +2,6 @@ const input__form = document.getElementById('input__form');
 const input__keys = document.getElementById('input__keys');
 const input__description = document.getElementById('input__description');
 const user__list = document.getElementById('user__list');
-console.log('my console log: user__list', user__list);
-console.log(localStorage);
 
 
     class Shortcut{
@@ -34,23 +32,36 @@ console.log(localStorage);
         shortCut__item.className = 'shortCut__item';
         shortCut__item.innerHTML = `<b>${keys}</b> - ${description}`;
         user__list.prepend(shortCut__item);
-    
+        // firebase add
+        db.collection("shortcuts").add({
+            keys: keys,
+            description: description
+            })
+        .then(err=>console.log(err))
     })
 
-    // cycle trough localStorage to get users shortcuts
+// cycle trough localStorage to get users shortcuts
 
-for(let i=0; i<localStorage.length; i++){
+/* for(let i=0; i<localStorage.length; i++){
    const userShortcut = JSON.parse(localStorage.getItem(localStorage.key(i)));
    const key = userShortcut.keys;
    const description = userShortcut.description;
-   console.log(key, description);
-   console.log('my console log: userShortcut', userShortcut)
    const shortCut__item = document.createElement('li');
    shortCut__item.className = 'shortCut__item';
    shortCut__item.innerHTML = `<b>${key}</b> - ${description}`;
     user__list.prepend(shortCut__item);
+} */
 
+// firebase get whole collection
 
-}
-
-
+db.collection("shortcuts").get()
+.then(snapshot=>snapshot.docs.forEach(doc=>{
+    const key = doc.data().keys;
+    const description = doc.data().description;
+    console.log(key, description);
+    const shortCut__item = document.createElement('li');
+   shortCut__item.className = 'shortCut__item';
+   shortCut__item.innerHTML = `<b>${key}</b> - ${description}`;
+    user__list.prepend(shortCut__item);
+}))
+.catch(err=>console.log(err))
