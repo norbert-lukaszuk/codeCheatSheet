@@ -49,15 +49,18 @@
         <div class="vsShortCut__wraper" id="vsShortCutList__wraper">
             <h3 class="section__header" id="vscode__sectionHeader">Added by User</h3>
                 <ul class="vsShortCut__list" id="user__list">
-                    <li class="shortCut__item"><b>Ctrl+G</b> - Go to line</li>
                     
-
                 </ul>
             </div>
     </section>
     <section class="form__section">
         <h3 class="section__header">Input new shortcut</h3>
         <div class="input__wraper" id="input__wraper">
+            <form class="login__form" id="login__form">
+                <input type="email" name="user__email" id="user__email" placeholder="User email">
+                <input type="password" name="user__password" id="user__password" placeholder="Password">
+                <input type="submit" value="Login" id="login__button">
+            </form>
             <form class="input__form" id="input__form">
                 <input type="text" name="input__keys" id="input__keys" placeholder="Keys combination">
                 <input type="text" name="input__description" id="input__description" placeholder="Description">
@@ -68,6 +71,7 @@
 </div>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
@@ -86,7 +90,9 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
   const db = firebase.firestore();
+  
 </script>
 <script src="script.js"></script>
 </body>

@@ -19,7 +19,35 @@ body{
 input::placeholder{
     text-align: center;
 }
-.input__form input[type="submit"]{
+.login__form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.login__form input[type="email"]{
+    display: block;
+    color: #ffffff;
+    margin-top: 10px;
+    background: none;
+    border: none;
+    border: 1px solid #ffffff;
+    border-radius: 3px;
+    width: 80%;
+    padding: 7px;
+}
+.login__form input[type="password"]{
+    display: block;
+    color: #ffffff;
+    margin-top: 10px;
+    background: none;
+    border: none;
+    border: 1px solid #ffffff;
+    border-radius: 3px;
+    width: 80%;
+    padding: 7px;
+}
+input[type="submit"]{
     display: block;
     margin-top: 10px;
     width: 60%;
@@ -42,6 +70,15 @@ input::placeholder{
     width: 80%;
     padding: 7px;
     
+}
+.input__wraper{
+    display: block;
+}
+.input__form--hide{
+    display: none;
+}
+.login__form--hide{
+    display: none;
 }
 .main__header{
     text-align: center;

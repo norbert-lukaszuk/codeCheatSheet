@@ -1,7 +1,10 @@
-const input__form = document.getElementById('input__form');
-const input__keys = document.getElementById('input__keys');
 const input__description = document.getElementById('input__description');
+const input__keys = document.getElementById('input__keys');
+const input__wraper = document.getElementById('input__wraper');
+const login__form = document.getElementById('login__form');
 const user__list = document.getElementById('user__list');
+const user__email = document.getElementById('user__email');
+const user__password = document.getElementById('user__password');
 
 
     class Shortcut{
@@ -17,7 +20,18 @@ const user__list = document.getElementById('user__list');
         }
     }
     
-    
+    login__form.addEventListener('submit',e=>{
+        e.preventDefault();
+        const email = user__email.value;
+        const password = user__password.value;
+        console.log(email, password);
+        login__form.reset();
+        auth.signInWithEmailAndPassword(email, password).then((cred) => {
+            // close the signup modal & reset form
+            console.log(cred);
+            login__form.className = 'login__form--hide'
+          });
+    })
     
     input__form.addEventListener('submit', e =>{
         e.preventDefault();
@@ -38,6 +52,7 @@ const user__list = document.getElementById('user__list');
             description: description
             })
         .then(err=>console.log(err))
+        // input__wraper.className = 'input__wraper--hide';
     })
 
 // cycle trough localStorage to get users shortcuts
@@ -63,5 +78,6 @@ db.collection("shortcuts").get()
    shortCut__item.className = 'shortCut__item';
    shortCut__item.innerHTML = `<b>${key}</b> - ${description}`;
     user__list.prepend(shortCut__item);
+    
 }))
 .catch(err=>console.log(err))
