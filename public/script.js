@@ -1,7 +1,9 @@
 const input__description = document.getElementById('input__description');
 const input__keys = document.getElementById('input__keys');
 const input__wraper = document.getElementById('input__wraper');
+const login__button = document.getElementById('login__button');
 const login__form = document.getElementById('login__form');
+const input__form = document.getElementById('input__form');
 const user__list = document.getElementById('user__list');
 const user__email = document.getElementById('user__email');
 const user__password = document.getElementById('user__password');
@@ -25,7 +27,7 @@ console.log("user__logout", user__logout)
         }
     }
 
-    login__form.addEventListener('submit',e=>{
+    login__button.addEventListener('click',e=>{
         e.preventDefault();
         const email = user__email.value;
         const password = user__password.value;
@@ -58,7 +60,6 @@ console.log("user__logout", user__logout)
         const newShortcut = new Shortcut(keys, description);
         console.log('my console log: newShortcut', newShortcut)
         localStorage.setItem(newShortcut.getKeys(),JSON.stringify(newShortcut));
-        input__form.reset();
         const shortCut__item = document.createElement('li');
         shortCut__item.className = 'shortCut__item';
         shortCut__item.innerHTML = `<b>${keys}</b> - ${description}`;
@@ -69,9 +70,10 @@ console.log("user__logout", user__logout)
             description: description,
             created: firebase.firestore.Timestamp.fromDate(created)
         })
-        .then(doc => shortCut__item.setAttribute('data-id',doc.id))
+        .then(doc => shortCut__item.setAttribute('data-id',doc.id)) // get the id of curretly created shortcut
         .catch(err=>console.log(err))
         
+        input__form.reset();
     })
     
     // cycle trough localStorage to get users shortcuts
@@ -87,10 +89,12 @@ console.log("user__logout", user__logout)
     } */
     user__logout.addEventListener('click', e=>{
             auth.signOut();
+            login__form.reset();
+            input__form.reset();
     })
     // 
     auth.onAuthStateChanged(user =>{
-        if(user){console.log('user in')
+        if(user){console.log(user__email)
         
         // firebase get whole collection
         
@@ -104,14 +108,18 @@ console.log("user__logout", user__logout)
             shortCut__item.innerHTML = `<b>${key}</b> - ${description}`;
             user__list.prepend(shortCut__item);
             login__form.className = 'login__form--hide'
+            // login__form.style.visibility = 'hidden';
+            // input__form.style.visibility = 'visible';
             input__form.className = 'input__form';
             
         }))
         .catch(err=>console.log(err))
     }
-    else{console.log('user out')
+    else if(!user){//console.log(user)
     user__list.innerHTML = '';
     login__form.className = 'login__form'
+    // login__form.style.visibility = 'visible';
+    // input__form.style.visibility = 'hidden';
     input__form.className = 'input__form--hide'
 }
 })

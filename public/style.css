@@ -8,8 +8,8 @@ html{
 }
 body{
     background-color: #000000; 
-    color: #ffffff
-}
+    color: #ffffff;
+    }
 
 .input__form{
     display: flex;
@@ -26,7 +26,18 @@ input::placeholder{
     justify-content: center;
     align-items: center;
 }
-
+.login__form button{
+    display: block;
+    margin-top: 10px;
+    width: 60%;
+    background: none;
+    border: none;
+    background-color: #ffffff;
+    padding: 7px;
+    border-radius: 3px;
+    font-weight: 600;
+    cursor: pointer;
+}
 .login__form input[type="email"]{
     display: block;
     color: #ffffff;
@@ -89,10 +100,10 @@ input[type="submit"]{
 }
 
 .input__form--hide{
-    display: none;
+    visibility: hidden;
 }
 .login__form--hide{
-    display: none;
+    visibility: hidden;
 }
 .main__header{
     text-align: center;
