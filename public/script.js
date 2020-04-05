@@ -5,7 +5,7 @@ const login__form = document.getElementById('login__form');
 const user__list = document.getElementById('user__list');
 const user__email = document.getElementById('user__email');
 const user__password = document.getElementById('user__password');
-
+const logout__button = document.getElementById('logout__button');
 
     class Shortcut{
         constructor(keys, description){
@@ -19,7 +19,9 @@ const user__password = document.getElementById('user__password');
             return this.description
         }
     }
-    
+    logout__button.addEventListener('click', e=>{
+        auth.signOut();
+    })
     login__form.addEventListener('submit',e=>{
         e.preventDefault();
         const email = user__email.value;
