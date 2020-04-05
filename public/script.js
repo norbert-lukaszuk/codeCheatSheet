@@ -9,9 +9,10 @@ const user__logout = document.getElementById('logout__button');
 console.log("user__logout", user__logout)
 
     class Shortcut{
-        constructor(keys, description){
+        constructor(keys, description, created){
             this.keys = keys;
             this.description = description;
+            this.created = created;
         }
         getKeys(){
             return this.keys
@@ -19,25 +20,40 @@ console.log("user__logout", user__logout)
         getDescription(){
             return this.description
         }
+        getCreationDate(){
+            return this.created.toLocaleDateString()
+        }
     }
-    
+
     login__form.addEventListener('submit',e=>{
         e.preventDefault();
         const email = user__email.value;
         const password = user__password.value;
         console.log(email, password);
         login__form.reset();
-        auth.signInWithEmailAndPassword(email, password).then((cred) => {
+        auth.signInWithEmailAndPassword(email, password)
+        .then((cred) => {
             // close the signup modal & reset form
             console.log(cred);
             login__form.className = 'login__form--hide'
-        });
+        })
+        .catch(err =>{console.log(err)
+            if(err.code === 'auth/wrong-password'||'auth/user-not-found'){
+                alert('You typed wrong email or password');
+            }
+            else if(err.code === 'auth/network-request-failed'){
+                alert('You have no internert connection');
+            }
+        })
+        
+
     })
     
     input__form.addEventListener('submit', e =>{
         e.preventDefault();
         const keys = input__keys.value;
         const description = input__description.value;
+        const created = new Date();
         console.log(keys, description);
         const newShortcut = new Shortcut(keys, description);
         console.log('my console log: newShortcut', newShortcut)
@@ -47,13 +63,15 @@ console.log("user__logout", user__logout)
         shortCut__item.className = 'shortCut__item';
         shortCut__item.innerHTML = `<b>${keys}</b> - ${description}`;
         user__list.prepend(shortCut__item);
-        // firebase add
+        // firebase add the shortcut
         db.collection("shortcuts").add({
             keys: keys,
-            description: description
+            description: description,
+            created: firebase.firestore.Timestamp.fromDate(created)
         })
-        .then(err=>console.log(err))
-        // input__wraper.className = 'input__wraper--hide';
+        .then(doc => shortCut__item.setAttribute('data-id',doc.id))
+        .catch(err=>console.log(err))
+        
     })
     
     // cycle trough localStorage to get users shortcuts
