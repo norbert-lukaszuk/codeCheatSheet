@@ -29,7 +29,7 @@ input::placeholder{
 .login__form button{
     display: block;
     margin-top: 10px;
-    width: 60%;
+    width: 40%;
     background: none;
     border: none;
     background-color: #ffffff;
@@ -46,7 +46,7 @@ input::placeholder{
     border: none;
     border: 1px solid #ffffff;
     border-radius: 3px;
-    width: 80%;
+    width: 50%;
     padding: 7px;
 }
 .login__form input[type="password"]{
@@ -57,7 +57,7 @@ input::placeholder{
     border: none;
     border: 1px solid #ffffff;
     border-radius: 3px;
-    width: 80%;
+    width: 50%;
     padding: 7px;
 }
 input[type="submit"]{
@@ -103,7 +103,8 @@ input[type="submit"]{
     visibility: hidden;
 }
 .login__form--hide{
-    visibility: hidden;
+    /* visibility: hidden; */
+    display: none;
 }
 .main__header{
     text-align: center;
@@ -120,6 +121,9 @@ input[type="submit"]{
     align-items: center;
     flex-direction: column; */
 }
+.navigation{
+    padding: 10px;
+}
 .section__header{
     /* font-size: 1.438rem; */
     border-bottom: 1px solid #f8f8f8;
@@ -127,6 +131,9 @@ input[type="submit"]{
 .shortCut__item{
     letter-spacing: 2px;
     
+}
+.user__icon{
+    cursor: pointer;
 }
 .user__list li{
     cursor: pointer;

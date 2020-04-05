@@ -4,6 +4,7 @@ const input__wraper = document.getElementById('input__wraper');
 const login__button = document.getElementById('login__button');
 const login__form = document.getElementById('login__form');
 const input__form = document.getElementById('input__form');
+const user__icon = document.getElementById('user__icon');
 const user__list = document.getElementById('user__list');
 const user__email = document.getElementById('user__email');
 const user__password = document.getElementById('user__password');
@@ -26,18 +27,20 @@ console.log("user__logout", user__logout)
             return this.created.toLocaleDateString()
         }
     }
-
+    user__icon.addEventListener('click', e=>{
+        login__form.classList.toggle('login__form--hide');
+    })
     login__button.addEventListener('click',e=>{
         e.preventDefault();
         const email = user__email.value;
         const password = user__password.value;
         console.log(email, password);
+        login__form.classList.add('login__form--hide');
         login__form.reset();
         auth.signInWithEmailAndPassword(email, password)
         .then((cred) => {
             // close the signup modal & reset form
             console.log(cred);
-            login__form.className = 'login__form--hide'
         })
         .catch(err =>{console.log(err)
             if(err.code === 'auth/wrong-password'||'auth/user-not-found'){
@@ -107,9 +110,7 @@ console.log("user__logout", user__logout)
             shortCut__item.setAttribute('data-id',doc.id); // unique id from firebase
             shortCut__item.innerHTML = `<b>${key}</b> - ${description}`;
             user__list.prepend(shortCut__item);
-            login__form.className = 'login__form--hide'
-            // login__form.style.visibility = 'hidden';
-            // input__form.style.visibility = 'visible';
+            
             input__form.className = 'input__form';
             
         }))
