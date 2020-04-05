@@ -10,6 +10,7 @@ body{
     background-color: #000000; 
     color: #ffffff
 }
+
 .input__form{
     display: flex;
     flex-direction: column;
@@ -25,6 +26,7 @@ input::placeholder{
     justify-content: center;
     align-items: center;
 }
+
 .login__form input[type="email"]{
     display: block;
     color: #ffffff;
@@ -57,7 +59,21 @@ input[type="submit"]{
     padding: 7px;
     border-radius: 3px;
     font-weight: 600;
+    cursor: pointer;
     
+}
+.input__form button{
+    display: block;
+    margin-top: 10px;
+    width: 60%;
+    background: none;
+    border: none;
+    background-color: #ffffff;
+    padding: 7px;
+    border-radius: 3px;
+    font-weight: 600;
+    cursor: pointer;
+
 }
 .input__form input[type="text"]{
     display: block;
@@ -71,9 +87,7 @@ input[type="submit"]{
     padding: 7px;
     
 }
-.input__wraper{
-    display: block;
-}
+
 .input__form--hide{
     display: none;
 }
@@ -102,6 +116,9 @@ input[type="submit"]{
 .shortCut__item{
     letter-spacing: 2px;
     
+}
+.user__list li{
+    cursor: pointer;
 }
 .vsShortCut__list{
     list-style: none;

@@ -5,7 +5,8 @@ const login__form = document.getElementById('login__form');
 const user__list = document.getElementById('user__list');
 const user__email = document.getElementById('user__email');
 const user__password = document.getElementById('user__password');
-
+const user__logout = document.getElementById('logout__button');
+console.log("user__logout", user__logout)
 
     class Shortcut{
         constructor(keys, description){
@@ -30,7 +31,7 @@ const user__password = document.getElementById('user__password');
             // close the signup modal & reset form
             console.log(cred);
             login__form.className = 'login__form--hide'
-          });
+        });
     })
     
     input__form.addEventListener('submit', e =>{
@@ -50,46 +51,54 @@ const user__password = document.getElementById('user__password');
         db.collection("shortcuts").add({
             keys: keys,
             description: description
-            })
+        })
         .then(err=>console.log(err))
         // input__wraper.className = 'input__wraper--hide';
     })
-
-// cycle trough localStorage to get users shortcuts
-
-/* for(let i=0; i<localStorage.length; i++){
-   const userShortcut = JSON.parse(localStorage.getItem(localStorage.key(i)));
-   const key = userShortcut.keys;
-   const description = userShortcut.description;
-   const shortCut__item = document.createElement('li');
-   shortCut__item.className = 'shortCut__item';
-   shortCut__item.innerHTML = `<b>${key}</b> - ${description}`;
-    user__list.prepend(shortCut__item);
-} */
-// 
-auth.onAuthStateChanged(user =>{
-    if(user){console.log('user in')
     
-    // firebase get whole collection
+    // cycle trough localStorage to get users shortcuts
     
-    db.collection("shortcuts").get()
-    .then(snapshot=>snapshot.docs.forEach(doc=>{
-        const key = doc.data().keys;
-        const description = doc.data().description;
+    /* for(let i=0; i<localStorage.length; i++){
+        const userShortcut = JSON.parse(localStorage.getItem(localStorage.key(i)));
+        const key = userShortcut.keys;
+        const description = userShortcut.description;
         const shortCut__item = document.createElement('li');
         shortCut__item.className = 'shortCut__item';
         shortCut__item.innerHTML = `<b>${key}</b> - ${description}`;
         user__list.prepend(shortCut__item);
-        login__form.className = 'login__form--hide'
-        input__form.className = 'input__form'
+    } */
+    user__logout.addEventListener('click', e=>{
+            auth.signOut();
+    })
+    // 
+    auth.onAuthStateChanged(user =>{
+        if(user){console.log('user in')
         
-    }))
-    .catch(err=>console.log(err))
-}
+        // firebase get whole collection
+        
+        db.collection("shortcuts").get()
+        .then(snapshot=>snapshot.docs.forEach(doc=>{
+            const key = doc.data().keys;
+            const description = doc.data().description;
+            const shortCut__item = document.createElement('li');
+            shortCut__item.className = 'shortCut__item';
+            shortCut__item.setAttribute('data-id',doc.id); // unique id from firebase
+            shortCut__item.innerHTML = `<b>${key}</b> - ${description}`;
+            user__list.prepend(shortCut__item);
+            login__form.className = 'login__form--hide'
+            input__form.className = 'input__form';
+            
+        }))
+        .catch(err=>console.log(err))
+    }
     else{console.log('user out')
     user__list.innerHTML = '';
     login__form.className = 'login__form'
     input__form.className = 'input__form--hide'
 }
-    })
-    
+})
+user__list.addEventListener('click', e=>{
+    if(e.target.tagName === 'LI'){
+        console.log(e.target.getAttribute('data-id'));
+    }
+})
