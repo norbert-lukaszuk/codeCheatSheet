@@ -29,17 +29,32 @@ console.log("user__logout", user__logout)
     }
     user__icon.addEventListener('click', e=>{
         login__form.classList.toggle('login__form--hide');
+        auth.onAuthStateChanged(user =>{
+            if(user){
+                user__email.classList.add('user__email--hide');
+                user__password.classList.add('user__password--hide');
+                login__button.classList.add('login__button--hide');
+                logout__button.classList.remove('logout__button--hide');
+            }
+            else if(!user){
+                login__form.classList.remove('login__form--hide')
+                user__email.classList.remove('user__email--hide');
+                user__password.classList.remove('user__password--hide');
+                login__button.classList.remove('login__button--hide');
+                logout__button.classList.add('logout__button--hide');
+
+            }
+        })
+        
     })
     login__button.addEventListener('click',e=>{
         e.preventDefault();
         const email = user__email.value;
         const password = user__password.value;
         console.log(email, password);
-        login__form.classList.add('login__form--hide');
         login__form.reset();
         auth.signInWithEmailAndPassword(email, password)
         .then((cred) => {
-            // close the signup modal & reset form
             console.log(cred);
         })
         .catch(err =>{console.log(err)
@@ -50,6 +65,7 @@ console.log("user__logout", user__logout)
                 alert('You have no internert connection');
             }
         })
+        login__form.classList.toggle('login__form--hide');
         
 
     })
@@ -94,10 +110,17 @@ console.log("user__logout", user__logout)
             auth.signOut();
             login__form.reset();
             input__form.reset();
+            login__form.className = 'login__form';
     })
     // 
     auth.onAuthStateChanged(user =>{
         if(user){console.log(user__email)
+        // hide login fields 
+        login__form.classList.add('login__form--hide');
+        user__email.classList.add('user__email--hide');
+        user__password.classList.add('user__password--hide');
+        login__button.classList.add('login__button--hide');
+        logout__button.classList.remove('logout__button--hide');
         
         // firebase get whole collection
         
@@ -117,11 +140,10 @@ console.log("user__logout", user__logout)
         .catch(err=>console.log(err))
     }
     else if(!user){//console.log(user)
-    user__list.innerHTML = '';
-    login__form.className = 'login__form'
-    // login__form.style.visibility = 'visible';
-    // input__form.style.visibility = 'hidden';
-    input__form.className = 'input__form--hide'
+        user__email.classList.remove('user__email--hide');
+        user__password.classList.remove('user__password--hide');
+        login__button.classList.remove('login__button--hide');
+        logout__button.classList.add('logout__button--hide');
 }
 })
 user__list.addEventListener('click', e=>{

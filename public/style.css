@@ -26,7 +26,10 @@ input::placeholder{
     justify-content: center;
     align-items: center;
 }
-.login__form button{
+.login__form--hide{
+    display: none;
+}
+.login__button{
     display: block;
     margin-top: 10px;
     width: 40%;
@@ -38,7 +41,25 @@ input::placeholder{
     font-weight: 600;
     cursor: pointer;
 }
-.login__form input[type="email"]{
+.login__button--hide{
+    display: none;
+}
+.logout__button{
+    display: block;
+    margin-top: 10px;
+    width: 40%;
+    background: none;
+    border: none;
+    background-color: #ffffff;
+    padding: 7px;
+    border-radius: 3px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.logout__button--hide{
+    display: none;
+}
+.user__email{
     display: block;
     color: #ffffff;
     margin-top: 10px;
@@ -49,7 +70,10 @@ input::placeholder{
     width: 50%;
     padding: 7px;
 }
-.login__form input[type="password"]{
+.user__email--hide{
+    display: none;
+}
+.user__password{
     display: block;
     color: #ffffff;
     margin-top: 10px;
@@ -59,6 +83,9 @@ input::placeholder{
     border-radius: 3px;
     width: 50%;
     padding: 7px;
+}
+.user__password--hide{
+    display: none;
 }
 input[type="submit"]{
     display: block;
@@ -102,10 +129,7 @@ input[type="submit"]{
 .input__form--hide{
     visibility: hidden;
 }
-.login__form--hide{
-    /* visibility: hidden; */
-    display: none;
-}
+
 .main__header{
     text-align: center;
 }
