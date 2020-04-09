@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="prism.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+
+    <title>Java Script</title>
+</head>
+<body>
+    <h1 class="main__header">Java Script</h1>
+    <pre><code class="language-js">
+/*Getting objects key and value pairs*/
+const bankArrayEntries = Object.entries(myObject);//getting array out of an object
+for([key, value] of bankArrayEntries){//logging them to the console 
+  console.log(`key: ${key} value: ${value}`)
+  }
+    </code></pre>
+
+<div class="output__container" id="output__container">
+    
+</div>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDzvO7xqa9bwmCF5fRwX3fcRMME7pjyOmk",
+    authDomain: "codecheatsheet-7d13a.firebaseapp.com",
+    databaseURL: "https://codecheatsheet-7d13a.firebaseio.com",
+    projectId: "codecheatsheet-7d13a",
+    storageBucket: "codecheatsheet-7d13a.appspot.com",
+    messagingSenderId: "147725314310",
+    appId: "1:147725314310:web:fe8f5a82f5a9c04c685687"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+  
+</script>
+<script src="script_1.js"></script>
+<script src="prism.js"></script>
+</body>
+</html>
