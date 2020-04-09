@@ -87,6 +87,31 @@ input::placeholder{
 .user__password--hide{
     display: none;
 }
+.category__radio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.category__radio label{
+    border: solid #ffffff 1px;
+    border-radius: 5px;
+    min-width: 65px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+.category__wraper{
+    padding: 10px 0;
+}
+input[type="radio"]:checked+label{
+    
+    background-color: green;
+}
+input[type="radio"]{
+    visibility: hidden;
+    
+
+  } 
 input[type="submit"]{
     display: block;
     margin-top: 10px;
