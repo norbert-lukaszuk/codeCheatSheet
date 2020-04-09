@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="prism.css">
     <script src="https://kit.fontawesome.com/420f196fe5.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
     <title>Code cheat sheet</title>
@@ -25,7 +26,7 @@
                 <label for="vsCode__category">VS Code</label>
 
                 <input type="radio" name="category" id="js__category">
-                <label for="js__category">Java Script</label>
+                <label for="js__category"><a href="codeSnip.html">Java Script</a></label>
 
                 <input type="radio" name="category" id="git__category">
                 <label for="git__category">GIT</label>
@@ -85,6 +86,12 @@
                 
             </form>
         </div>
+    <section>
+        <h3 class="section__header">Prism coloring code </h3>
+        <div class="code__wraper" id="code__wraper">
+            <pre><code class="language-css">p { color: red }</code></pre>
+        </div>
+    </section>
     </section>
     
 </div>
@@ -114,5 +121,6 @@
   
 </script>
 <script src="script.js"></script>
+<script src="prism.js"></script>
 </body>
 </html>
