@@ -9,8 +9,18 @@ html{
 body{
     background-color: #000000; 
     color: #ffffff;
+    position: relative;
     }
-
+.buttons__wraper{
+    padding: 20px;
+}
+.buttons__wraper button{
+    padding: 10px;
+    font-size: 1.25rem;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+    background-color: #008000e3;
+}
 .input__form{
     display: flex;
     flex-direction: column;
@@ -19,6 +29,9 @@ body{
 }
 input::placeholder{
     text-align: center;
+}
+.language-js{
+    position: relative;
 }
 .login__form{
     display: flex;
@@ -103,6 +116,13 @@ input::placeholder{
 .category__wraper{
     padding: 10px 0;
 }
+.fa-plus-circle{
+    position: fixed;
+    color: #ffffff;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1;
+}
 input[type="radio"]:checked+label{
     
     background-color: green;
@@ -154,9 +174,30 @@ input[type="submit"]{
 .input__form--hide{
     visibility: hidden;
 }
-
+.input__textarea{
+    font-size: 1.25rem;
+    background-color: #000000;
+    color: #beb4b4;
+}
+.input__textarea--hide{
+    display: none;
+}
+.input__wraper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    top: 60px;
+    
+}
 .main__header{
     text-align: center;
+}
+.main__header--js{
+    color: #dffc3b9c;
 }
 .main__wraper{
     display: grid;
@@ -180,6 +221,9 @@ input[type="submit"]{
 .shortCut__item{
     letter-spacing: 2px;
     
+}
+.snippet__header{
+    padding-left: 20px;
 }
 .user__icon{
     cursor: pointer;

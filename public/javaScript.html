@@ -6,11 +6,18 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="prism.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
-
+    <script src="https://kit.fontawesome.com/420f196fe5.js" crossorigin="anonymous"></script>
     <title>Java Script</title>
 </head>
 <body>
-    <h1 class="main__header">Java Script</h1>
+    <i class="fas fa-plus-circle fa-3x" id="add__button"></i>
+    <h1 class="main__header main__header--js">Java Script</h1>
+    <div class="input__wraper" id="input__wraper">
+      <textarea name="input__textarea" class="input__textarea input__textarea--hide" id="input__textarea" cols="50" rows="20" placeholder="Put Your code here"></textarea>
+      <div class="buttons__wraper" id="buttons__wraper">
+        <button class="send__button" id="send__button"><i class="far fa-paper-plane fa-2x"></i>SEND</button>
+      </div>
+    </div>
     <pre><code class="language-js">
 /*Getting objects key and value pairs*/
 const bankArrayEntries = Object.entries(myObject);//getting array out of an object
