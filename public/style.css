@@ -12,14 +12,26 @@ body{
     position: relative;
     }
 .buttons__wraper{
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
     padding: 20px;
+    width: 50%;
+
 }
 .buttons__wraper button{
     padding: 10px;
     font-size: 1.25rem;
     border-radius: 10px;
-    border: 1px solid #ffffff;
+    border-style: none;
     background-color: #008000e3;
+    cursor: pointer;
+}
+.cancel__button--hide{
+    display: none;
+}
+.cancel__button{
+    background-color: #808080dc;
 }
 .input__form{
     display: flex;
@@ -70,6 +82,9 @@ input::placeholder{
     cursor: pointer;
 }
 .logout__button--hide{
+    display: none;
+}
+.send__button--hide{
     display: none;
 }
 .user__email{
@@ -178,6 +193,9 @@ input[type="submit"]{
     font-size: 1.25rem;
     background-color: #000000;
     color: #beb4b4;
+}
+.input__textarea::placeholder{
+    padding: 10px;
 }
 .input__textarea--hide{
     display: none;
