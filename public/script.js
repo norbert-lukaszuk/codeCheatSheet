@@ -95,17 +95,6 @@ console.log("user__logout", user__logout)
         input__form.reset();
     })
     
-    // cycle trough localStorage to get users shortcuts
-    
-    /* for(let i=0; i<localStorage.length; i++){
-        const userShortcut = JSON.parse(localStorage.getItem(localStorage.key(i)));
-        const key = userShortcut.keys;
-        const description = userShortcut.description;
-        const shortCut__item = document.createElement('li');
-        shortCut__item.className = 'shortCut__item';
-        shortCut__item.innerHTML = `<b>${key}</b> - ${description}`;
-        user__list.prepend(shortCut__item);
-    } */
     user__logout.addEventListener('click', e=>{
             auth.signOut();
             login__form.reset();
