@@ -30,6 +30,12 @@ db.collection("jsSnippets").orderBy('description').onSnapshot(snapshot=>{
     })
     Prism.highlightAll();
 })
+// get data from subcollection
+db.collection('data').doc('codeSnippets').collection('jsSnippets').get()
+.then(snapshot=>{
+    console.log(snapshot.docs)
+})
+.catch(err=>console.log(err)) 
 // geting data from bouth collections
 let arr = ['jsSnippets','gitSnippets']
 arr.forEach(e=>{
