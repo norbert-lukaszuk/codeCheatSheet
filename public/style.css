@@ -133,6 +133,10 @@ input::placeholder{
     justify-content: center;
     align-items: center;
     padding: 10px;
+    
+}
+.category__wraper--hide{
+    display: none;
 }
 .category__wraper label{
     padding: 10px;

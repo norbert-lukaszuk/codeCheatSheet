@@ -5,6 +5,7 @@ const input__textarea = document.getElementById('input__textarea');
 const send__button = document.getElementById('send__button');
 const cancel__button = document.getElementById('cancel__button');
 const category = document.getElementsByName('category');
+const category__wraper = document.getElementById('category__wraper');
 
 // open input for snippet
 add__button.addEventListener('click', e=>{
@@ -97,6 +98,7 @@ function toggleInput() {
     description__textarea.classList.toggle('input__textarea--hide');
     send__button.classList.toggle('send__button--hide');
     cancel__button.classList.toggle('cancel__button--hide');
+    category__wraper.classList.toggle('category__wraper--hide');
     input__textarea.value = '';
     description__textarea.value = '';
 }
