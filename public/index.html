@@ -12,6 +12,16 @@
 <body>
   <h1 class="main__header main__header--js">Java Script</h1>
   <div class="input__wraper" id="input__wraper">
+    <div class="category__wraper" id="category__wraper">
+      <input type="radio" name="category" value="gitSnippets" id="category__git">
+      <label for="category__git">GIT</label>
+      <input type="radio" name="category" value="jsSnippets" checked id="category__js">
+      <label for="category__js">JS</label>
+      <input type="radio" name="category" value="cssSnippets" id="category__css">
+      <label for="category__css">CSS</label>
+      <input type="radio" name="category" value="bashSnippets" id="category__bash">
+      <label for="category__bash">BASH</label>
+    </div>
     <textarea name="input__textarea" class="input__textarea input__textarea--hide" id="input__textarea" cols="50" rows="20" placeholder="Put Your code here..."></textarea>
     <textarea name="input__textarea" class="input__textarea input__textarea--hide" id="description__textarea" cols="50" rows="5" placeholder="And short description here..."></textarea>
     <div class="buttons__wraper" id="buttons__wraper">

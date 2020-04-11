@@ -4,6 +4,8 @@ const description__textarea = document.getElementById('description__textarea');
 const input__textarea = document.getElementById('input__textarea');
 const send__button = document.getElementById('send__button');
 const cancel__button = document.getElementById('cancel__button');
+const category = document.getElementsByName('category');
+
 // open input for snippet
 add__button.addEventListener('click', e=>{
     toggleInput();
@@ -74,6 +76,14 @@ function toggleInput() {
     cancel__button.classList.toggle('cancel__button--hide');
     input__textarea.value = '';
     description__textarea.value = '';
-
-
+}
+// check witch category radio input is selected
+function checkCategory(){
+    let value;
+    category.forEach(e=>{
+        if(e.checked){
+            value = e.value
+        }
+    })
+    return value
 }

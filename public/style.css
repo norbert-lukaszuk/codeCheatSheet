@@ -129,8 +129,21 @@ input::placeholder{
     cursor: pointer;
 }
 .category__wraper{
-    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
 }
+.category__wraper label{
+    padding: 10px;
+    min-width: 55px;
+    text-align: center;
+    background-color: #808080d8;
+    border: solid gray 1px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
 .fa-plus-circle{
     position: fixed;
     color: #ffffff;
