@@ -10,7 +10,7 @@ add__button.addEventListener('click', e=>{
     
 })
 // real time listener for firestore
-db.collection("jsSnippets").orderBy('description').onSnapshot(snapshot=>{
+db.collection("gitSnippets").orderBy('description').onSnapshot(snapshot=>{
     snapshot.docChanges().forEach(e=>{
         if(e.type === 'added'){
 
@@ -54,7 +54,7 @@ send__button.addEventListener('click', e=>{
     toggleInput();
 
     // sending to firestore
-    db.collection("jsSnippets").add({
+    db.collection("gitSnippets").add({
         code: snippet,
         description: description
     })
