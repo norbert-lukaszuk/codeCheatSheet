@@ -12,6 +12,7 @@ add__button.addEventListener('click', e=>{
     
 })
 // real time listener for firestore
+
 db.collection("jsSnippets").orderBy('description').onSnapshot(snapshot=>{
     snapshot.docChanges().forEach(e=>{
         if(e.type === 'added'){
@@ -29,7 +30,22 @@ db.collection("jsSnippets").orderBy('description').onSnapshot(snapshot=>{
     })
     Prism.highlightAll();
 })
-
+// geting data from bouth collections
+let arr = ['jsSnippets','gitSnippets']
+arr.forEach(e=>{
+    console.log(e)
+    db.collection(e).get()
+    .then(snapshot=>{
+    const docs = snapshot.docs;
+    docs.forEach(e=>{
+    const snippet = e.data().code;
+    console.log(snippet);
+    
+    })
+    })
+    .catch(err=>console.log(err))
+    
+    })
 // loading code snippets from firestore
 // db.collection("jsSnippets").get()
 // .then(snapshot=>{
@@ -52,11 +68,12 @@ db.collection("jsSnippets").orderBy('description').onSnapshot(snapshot=>{
 send__button.addEventListener('click', e=>{
     const snippet = input__textarea.value;
     const description = description__textarea.value;
-    console.log(snippet);
+    const category = checkCategory();
+    console.log(category);
     toggleInput();
 
     // sending to firestore
-    db.collection("jsSnippets").add({
+    db.collection(category).add({
         code: snippet,
         description: description
     })
