@@ -13,6 +13,16 @@ add__button.addEventListener('click', e=>{
     
 })
 // real time listener for firestore
+db.collection('data/codeSnippets/jsSnippets/').onSnapshot(snapshot=>{
+    snapshot.docChanges().forEach(e=>{
+        console.log(e);
+        if(e.type === 'added'){
+            console.log(`added doc ${e.doc.id}`);
+            console.log(`data: ${e.doc.data().code}`);
+
+        }
+    })
+})
 
 db.collection("jsSnippets").orderBy('description').onSnapshot(snapshot=>{
     snapshot.docChanges().forEach(e=>{
@@ -46,7 +56,7 @@ arr.forEach(e=>{
     const docs = snapshot.docs;
     docs.forEach(e=>{
     const snippet = e.data().code;
-    console.log(snippet);
+    // console.log(snippet);
     
     })
     })
@@ -80,7 +90,7 @@ send__button.addEventListener('click', e=>{
     toggleInput();
 
     // sending to firestore
-    db.collection(category).add({
+    db.collection('data').doc('codeSnippets').collection(category).add({
         code: snippet,
         description: description
     })
