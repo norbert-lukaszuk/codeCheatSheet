@@ -6,14 +6,24 @@ const send__button = document.getElementById('send__button');
 const cancel__button = document.getElementById('cancel__button');
 const category = document.getElementsByName('category');
 const category__wraper = document.getElementById('category__wraper');
+const navigation__list = document.getElementById('navigation__list');
+const category__selected = checkCategory();
 
 // open input for snippet
+
 add__button.addEventListener('click', e=>{
     toggleInput();
     
 })
+// navigation listener
+
+navigation__list.addEventListener('click', e=>{
+    console.log(e.target.tagName);
+})
+
 // real time listener for firestore
-db.collection('data/codeSnippets/jsSnippets/').onSnapshot(snapshot=>{
+
+db.collection('data/codeSnippets/gitSnippets/').onSnapshot(snapshot=>{
     snapshot.docChanges().forEach(e=>{
         console.log(e);
         if(e.type === 'added'){
@@ -24,7 +34,8 @@ db.collection('data/codeSnippets/jsSnippets/').onSnapshot(snapshot=>{
     })
 })
 
-db.collection("jsSnippets").orderBy('description').onSnapshot(snapshot=>{
+db.collection(`data/codeSnippets/${category__selected}/`).orderBy('description').onSnapshot(snapshot=>{
+// db.collection("jsSnippets").orderBy('description').onSnapshot(snapshot=>{
     snapshot.docChanges().forEach(e=>{
         if(e.type === 'added'){
 
@@ -90,7 +101,8 @@ send__button.addEventListener('click', e=>{
     toggleInput();
 
     // sending to firestore
-    db.collection('data').doc('codeSnippets').collection(category).add({
+    db.collection(`data/codeSnippets/${category}/`).add({
+    // db.collection('data').doc('codeSnippets').collection(category).add({
         code: snippet,
         description: description
     })
