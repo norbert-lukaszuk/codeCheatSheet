@@ -7,7 +7,7 @@ const cancel__button = document.getElementById('cancel__button');
 const category = document.getElementsByName('category');
 const category__wraper = document.getElementById('category__wraper');
 const navigation__list = document.getElementById('navigation__list');
-const category__selected = checkCategory();
+let category__selected = checkCategory();
 
 // open input for snippet
 
@@ -18,7 +18,12 @@ add__button.addEventListener('click', e=>{
 // navigation listener
 
 navigation__list.addEventListener('click', e=>{
-    console.log(e.target.tagName);
+    if(e.target.tagName === 'LI'){
+        console.log(e.target.getAttribute('lang-id'));
+        console.log(e.target.getAttribute('snip-id'));
+        category__selected = e.target.getAttribute('snip-id');
+        console.log('my console log: category__selected ', category__selected )
+    }
 })
 
 // real time listener for firestore
