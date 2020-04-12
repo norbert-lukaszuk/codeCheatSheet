@@ -210,9 +210,10 @@ input[type="submit"]{
     font-size: 1.25rem;
     background-color: #000000;
     color: #beb4b4;
+    padding: 10px;
 }
 .input__textarea::placeholder{
-    padding: 10px;
+    padding: 0;
 }
 .input__textarea--hide{
     display: none;

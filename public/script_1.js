@@ -148,7 +148,7 @@ function toggleInput() {
 }
 // check witch category radio input is selected
 function checkCategory(){
-    let value = category__selected;
+    let value; 
     category.forEach(e=>{
         if(e.checked){
             value = e.value
