@@ -7,7 +7,7 @@ const cancel__button = document.getElementById('cancel__button');
 const category = document.getElementsByName('category');
 const category__wraper = document.getElementById('category__wraper');
 const navigation__list = document.getElementById('navigation__list');
-let category__selected = checkCategory();
+let category__selected = 'jsSnippets';
 
 // open input for snippet
 
@@ -22,25 +22,42 @@ navigation__list.addEventListener('click', e=>{
         console.log(e.target.getAttribute('lang-id'));
         console.log(e.target.getAttribute('snip-id'));
         category__selected = e.target.getAttribute('snip-id');
-        console.log('my console log: category__selected ', category__selected )
+        const lang = e.target.getAttribute('lang-id');
+        output.innerHTML = '';
+        db.collection(`data/codeSnippets/${category__selected}/`).orderBy('description').onSnapshot(snapshot=>{
+                snapshot.docChanges().forEach(e=>{
+                    if(e.type === 'added'){
+            
+                        const snippet = e.doc.data().code;
+                        const description = e.doc.data().description;
+                        output.innerHTML += `<h4 class="snippet__header">${description}</h4>`
+                        const prism_el = document.createElement('pre');
+                        const code = document.createElement('code');
+                        code.className = lang;
+                        code.innerText = snippet;
+                        prism_el.append(code);
+                        output.append(prism_el);
+                    }
+                })
+                Prism.highlightAll();
+            })
     }
 })
 
 // real time listener for firestore
 
-db.collection('data/codeSnippets/gitSnippets/').onSnapshot(snapshot=>{
-    snapshot.docChanges().forEach(e=>{
-        console.log(e);
-        if(e.type === 'added'){
-            console.log(`added doc ${e.doc.id}`);
-            console.log(`data: ${e.doc.data().code}`);
+// db.collection('data/codeSnippets/gitSnippets/').onSnapshot(snapshot=>{
+//     snapshot.docChanges().forEach(e=>{
+//         console.log(e);
+//         if(e.type === 'added'){
+//             console.log(`added doc ${e.doc.id}`);
+//             console.log(`data: ${e.doc.data().code}`);
 
-        }
-    })
-})
+//         }
+//     })
+// })
 
 db.collection(`data/codeSnippets/${category__selected}/`).orderBy('description').onSnapshot(snapshot=>{
-// db.collection("jsSnippets").orderBy('description').onSnapshot(snapshot=>{
     snapshot.docChanges().forEach(e=>{
         if(e.type === 'added'){
 
@@ -131,7 +148,7 @@ function toggleInput() {
 }
 // check witch category radio input is selected
 function checkCategory(){
-    let value;
+    let value = category__selected;
     category.forEach(e=>{
         if(e.checked){
             value = e.value
