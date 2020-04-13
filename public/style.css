@@ -50,9 +50,27 @@ input::placeholder{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 30%;
 }
 .login__form--hide{
     display: none;
+}
+.login__form input{
+    background-color: transparent;
+    width: 90%;
+    color: gray;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 7px;
+}.login__form--hide{
+    display: none;
+}
+.login__wraper{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
 }
 .login__button{
     display: block;
@@ -68,6 +86,9 @@ input::placeholder{
 }
 .login__button--hide{
     display: none;
+}
+.login__submit{
+    width: 20%;
 }
 .logout__button{
     display: block;
@@ -87,34 +108,7 @@ input::placeholder{
 .send__button--hide{
     display: none;
 }
-.user__email{
-    display: block;
-    color: #ffffff;
-    margin-top: 10px;
-    background: none;
-    border: none;
-    border: 1px solid #ffffff;
-    border-radius: 3px;
-    width: 50%;
-    padding: 7px;
-}
-.user__email--hide{
-    display: none;
-}
-.user__password{
-    display: block;
-    color: #ffffff;
-    margin-top: 10px;
-    background: none;
-    border: none;
-    border: 1px solid #ffffff;
-    border-radius: 3px;
-    width: 50%;
-    padding: 7px;
-}
-.user__password--hide{
-    display: none;
-}
+
 .category__radio{
     display: flex;
     justify-content: center;
@@ -155,6 +149,11 @@ input::placeholder{
     right: 30px;
     cursor: pointer;
 }
+.fa-power-off{
+    color: #ad4848;
+    padding: 15px 15px 0 15px;
+    cursor: pointer;
+}
 input[type="radio"]:checked+label{
     
     background-color: green;
@@ -164,7 +163,7 @@ input[type="radio"]{
     
 
   } 
-input[type="submit"]{
+/* input[type="submit"]{
     display: block;
     margin-top: 10px;
     width: 60%;
@@ -176,7 +175,7 @@ input[type="submit"]{
     font-weight: 600;
     cursor: pointer;
     
-}
+} */
 .input__form button{
     display: block;
     margin-top: 10px;

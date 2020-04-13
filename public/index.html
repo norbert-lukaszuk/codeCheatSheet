@@ -10,6 +10,7 @@
     <title>Java Script</title>
 </head>
 <body>
+  <i class="fas fa-power-off fa-2x" id="power__button"></i>
   <div class="navigation__wraper" id="navigation__wraper">
     <nav class="navigation" id="navigation">
       <ul class="navigation__list" id="navigation__list">
@@ -19,6 +20,14 @@
         <li class="navigation__item" lang-id="language-bash" snip-id="bashSnippets" id="navigation__item">BASH</li>
       </ul>
     </nav>
+  </div>
+  <div class="login__wraper" id="login__wraper">
+    <form class="login__form" id="login__form">
+      <input type="email" class="user__email" id="user__password" placeholder="Your email">
+      <input type="password" class="user__password" id="user__password" placeholder="Your password">
+      <input type="submit" class="login__submit" id="login__submit" value="Login">
+
+    </form>
   </div>
   <h1 class="main__header main__header--js" id="main__header">jsSnippets</h1>
   <div class="input__wraper" id="input__wraper">
@@ -32,8 +41,8 @@
       <input type="radio" name="category" value="bashSnippets" id="category__bash">
       <label for="category__bash">BASH</label>
     </div>
+    <textarea name="input__textarea" class="input__textarea input__textarea--hide" id="description__textarea" cols="50" rows="3" placeholder="And short description here..."></textarea>
     <textarea name="input__textarea" class="input__textarea input__textarea--hide" id="input__textarea" cols="50" rows="20" placeholder="Put Your code here..."></textarea>
-    <textarea name="input__textarea" class="input__textarea input__textarea--hide" id="description__textarea" cols="50" rows="5" placeholder="And short description here..."></textarea>
     <div class="buttons__wraper" id="buttons__wraper">
       <button class="send__button send__button--hide" id="send__button"><i class="far fa-paper-plane fa-2x"></i>SEND</button>
       <button class="cancel__button cancel__button--hide" id="cancel__button"><i class="far fa-window-close fa-2x"></i> CANCEL</button>

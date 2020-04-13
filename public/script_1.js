@@ -1,14 +1,16 @@
-const output = document.getElementById('output__container');
-const add__button = document.getElementById('add__button');
-const description__textarea = document.getElementById('description__textarea');
-const input__textarea = document.getElementById('input__textarea');
-const send__button = document.getElementById('send__button');
-const cancel__button = document.getElementById('cancel__button');
-const category = document.getElementsByName('category');
-const category__wraper = document.getElementById('category__wraper');
-const navigation__list = document.getElementById('navigation__list');
-const main__header = document.getElementById('main__header');
-let category__selected = 'jsSnippets';
+const output = document.getElementById("output__container");
+const add__button = document.getElementById("add__button");
+const description__textarea = document.getElementById("description__textarea");
+const input__textarea = document.getElementById("input__textarea");
+const send__button = document.getElementById("send__button");
+const cancel__button = document.getElementById("cancel__button");
+const category = document.getElementsByName("category");
+const category__wraper = document.getElementById("category__wraper");
+const navigation__list = document.getElementById("navigation__list");
+const main__header = document.getElementById("main__header");
+const power__button = document.getElementById('power__button');
+const login__form = document.getElementById('login__form');
+let category__selected = "jsSnippets";
 
 // open input for snippet
 
@@ -16,6 +18,13 @@ add__button.addEventListener('click', e=>{
     toggleInput();
     
 })
+
+// power__button listener
+
+power__button.addEventListener('click', e=>{
+    login__form.classList.toggle('login__form--hide');
+})
+
 // navigation listener
 
 navigation__list.addEventListener('click', e=>{
