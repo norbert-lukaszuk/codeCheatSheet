@@ -7,6 +7,7 @@ const cancel__button = document.getElementById('cancel__button');
 const category = document.getElementsByName('category');
 const category__wraper = document.getElementById('category__wraper');
 const navigation__list = document.getElementById('navigation__list');
+const main__header = document.getElementById('main__header');
 let category__selected = 'jsSnippets';
 
 // open input for snippet
@@ -24,6 +25,7 @@ navigation__list.addEventListener('click', e=>{
         category__selected = e.target.getAttribute('snip-id');
         const lang = e.target.getAttribute('lang-id');
         output.innerHTML = '';
+        main__header.innerText = category__selected;
         db.collection(`data/codeSnippets/${category__selected}/`).orderBy('description').onSnapshot(snapshot=>{
                 snapshot.docChanges().forEach(e=>{
                     if(e.type === 'added'){
