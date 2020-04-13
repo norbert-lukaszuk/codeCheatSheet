@@ -231,6 +231,7 @@ input[type="submit"]{
 }
 .main__header{
     text-align: center;
+    padding: 25px;
 }
 .main__header--js{
     color: #dffc3b9c;
@@ -252,6 +253,15 @@ input[type="submit"]{
 }
 .navigation__item{
     cursor: pointer;
+    font-size: 1.5rem;
+    background-color: gray;
+    min-width: 70px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 3px;
+}
+.navigation__item:hover{
+    background-color: rgb(185, 181, 181);
 }
 .navigation__list{
     display: flex;
@@ -259,6 +269,9 @@ input[type="submit"]{
     align-items: center;
     list-style: none;
     
+}
+.navigation__list--hidden{
+    visibility: hidden;
 }
 .section__header{
     /* font-size: 1.438rem; */
