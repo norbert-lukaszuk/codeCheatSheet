@@ -45,6 +45,9 @@ input::placeholder{
 .language-js{
     position: relative;
 }
+.login{
+    color: greenyellow;
+}
 .login__form{
     display: flex;
     flex-direction: column;
@@ -89,6 +92,10 @@ input::placeholder{
 }
 .login__submit{
     width: 20%;
+}
+.logout{
+    color: #b94747;
+    
 }
 .logout__button{
     display: block;
@@ -148,9 +155,10 @@ input::placeholder{
     bottom: 20px;
     right: 30px;
     cursor: pointer;
+    z-index: 3;
 }
 .fa-power-off{
-    color: #ad4848;
+    /* color: #ad4848; */
     padding: 15px 15px 0 15px;
     cursor: pointer;
 }
@@ -224,7 +232,7 @@ input[type="radio"]{
     flex-direction: column;
     position: absolute;
     width: 100%;
-    z-index: 2;
+    z-index: 1;
     top: 60px;
     
 }
@@ -258,6 +266,7 @@ input[type="radio"]{
     text-align: center;
     border-radius: 5px;
     padding: 3px;
+    z-index: 2;
 }
 .navigation__item:hover{
     background-color: rgb(185, 181, 181);

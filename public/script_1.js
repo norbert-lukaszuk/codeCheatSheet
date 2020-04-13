@@ -12,6 +12,17 @@ const power__button = document.getElementById('power__button');
 const login__form = document.getElementById('login__form');
 let category__selected = "jsSnippets";
 
+auth.onAuthStateChanged(user => {
+    if(user){
+        power__button.classList.replace('logout','login');
+        console.log(user);
+    }
+    else{
+        power__button.classList.replace('login','logout');
+        output.innerHTML = `<h3 style="text-align: center">You have to log in...</h3>`
+        console.log(user);
+    }
+})
 // open input for snippet
 
 add__button.addEventListener('click', e=>{
@@ -99,6 +110,17 @@ cancel__button.addEventListener('click', e=>{
     toggleInput();
     
 })
+// check if the user is login
+// function isLogin(){
+//     if(auth.getUid()){
+//         console.log('user in');
+//         power__button.classList.add('login');
+//     }
+//     else if(!auth.getUid()){
+//         console.log('user out');
+//         // power__button.classList.remove('login');
+//     }
+// }
 // toggling whole visibility input function
 function toggleInput() {
     input__textarea.classList.toggle('input__textarea--hide');
