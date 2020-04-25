@@ -15,12 +15,14 @@ const logout__button = document.getElementById('logout__button');
 let category__selected = "jsSnippets";
 
 auth.onAuthStateChanged(user => {
-    if(user){
+    if(user){   
+                output.innerHTML = '';
 				power__button.classList.replace('logout','login');
 				login__form.user__email.style.display = 'none';
 				login__form.user__password.style.display = 'none';
 				login__form.login__submit.style.display = 'none';
-				login__form.logout__button.style.display = 'block';
+                login__form.logout__button.style.display = 'block';
+                getCollection();
         console.log(user);
 			}
 			else{
@@ -29,9 +31,8 @@ auth.onAuthStateChanged(user => {
 				login__form.user__password.style.display = 'block';
 				login__form.login__submit.style.display = 'block';
 				login__form.logout__button.style.display = 'none';
-				
-        output.innerHTML = `<h3 style="text-align: center">You have to log in...</h3>`
-        console.log(user);
+                output.innerHTML = `<h3 style="text-align: center">You have to log in...</h3>`
+                console.log(user);
     }
 })
 // open input for snippet
@@ -168,4 +169,25 @@ function checkCategory(){
         }
     })
     return value
+}
+
+// get collection from firestore
+
+function getCollection() {
+    db.collection(`data/codeSnippets/${category__selected}/`).orderBy('description').get()
+    .then(snapshot=>{
+        snapshot.docs.forEach(e=>{
+            console.log(e.data());
+            const snippet = e.data().code;
+            const description = e.data().description;
+            output.innerHTML += `<h4 class="snippet__header">${description}</h4>`
+            const prism_el = document.createElement('pre');
+            const code = document.createElement('code');
+            code.className = 'language-js';
+            code.innerText = snippet;
+            prism_el.append(code);
+            output.append(prism_el);
+            Prism.highlightAll();
+        })
+    })
 }
