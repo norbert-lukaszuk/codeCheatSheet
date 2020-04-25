@@ -11,15 +11,25 @@ const main__header = document.getElementById("main__header");
 const power__button = document.getElementById('power__button');
 const login__form = document.getElementById('login__form');
 const login__submit = document.getElementById('login__submit');
+const logout__button = document.getElementById('logout__button');
 let category__selected = "jsSnippets";
 
 auth.onAuthStateChanged(user => {
     if(user){
-        power__button.classList.replace('logout','login');
+				power__button.classList.replace('logout','login');
+				login__form.user__email.style.display = 'none';
+				login__form.user__password.style.display = 'none';
+				login__form.login__submit.style.display = 'none';
+				login__form.logout__button.style.display = 'block';
         console.log(user);
-    }
-    else{
-        power__button.classList.replace('login','logout');
+			}
+			else{
+				power__button.classList.replace('login','logout');
+				login__form.user__email.style.display = 'block';
+				login__form.user__password.style.display = 'block';
+				login__form.login__submit.style.display = 'block';
+				login__form.logout__button.style.display = 'none';
+				
         output.innerHTML = `<h3 style="text-align: center">You have to log in...</h3>`
         console.log(user);
     }
@@ -45,7 +55,11 @@ login__form.addEventListener('submit', e=>{
 		auth.signInWithEmailAndPassword(email, password);
 		login__form.reset();
 })
+// logout button
 
+logout__button.addEventListener('click', e=>{
+	auth.signOut();
+})
 // navigation listener
 
 navigation__list.addEventListener('click', e=>{

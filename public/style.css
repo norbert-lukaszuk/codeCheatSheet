@@ -97,7 +97,7 @@ input::placeholder{
     color: #b94747;
     
 }
-.logout__button{
+/* .logout__button{
     display: block;
     margin-top: 10px;
     width: 40%;
@@ -108,7 +108,7 @@ input::placeholder{
     border-radius: 3px;
     font-weight: 600;
     cursor: pointer;
-}
+} */
 .logout__button--hide{
     display: none;
 }
