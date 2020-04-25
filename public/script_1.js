@@ -52,7 +52,8 @@ login__form.addEventListener('submit', e=>{
     e.preventDefault();
 		const email = login__form.user__email.value;
 		const password = login__form.user__password.value;
-		auth.signInWithEmailAndPassword(email, password);
+        auth.signInWithEmailAndPassword(email, password);
+        login__form.classList.add('login__form--hide');
 		login__form.reset();
 })
 // logout button
