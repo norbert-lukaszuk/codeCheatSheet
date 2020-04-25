@@ -10,6 +10,7 @@ const navigation__list = document.getElementById("navigation__list");
 const main__header = document.getElementById("main__header");
 const power__button = document.getElementById('power__button');
 const login__form = document.getElementById('login__form');
+const login__submit = document.getElementById('login__submit');
 let category__selected = "jsSnippets";
 
 auth.onAuthStateChanged(user => {
@@ -34,6 +35,15 @@ add__button.addEventListener('click', e=>{
 
 power__button.addEventListener('click', e=>{
     login__form.classList.toggle('login__form--hide');
+})
+
+// login button
+login__form.addEventListener('submit', e=>{
+    e.preventDefault();
+		const email = login__form.user__email.value;
+		const password = login__form.user__password.value;
+		auth.signInWithEmailAndPassword(email, password);
+		login__form.reset();
 })
 
 // navigation listener
