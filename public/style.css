@@ -303,3 +303,11 @@ input[type="radio"]{
     list-style: none;
     padding: 20px 0;
 }
+@media(max-width: 360px){
+    .login__form{
+        width: 70%;
+    }
+    .login__wraper{
+        align-items: center;
+    }
+}   
