@@ -14,6 +14,7 @@ const login__submit = document.getElementById('login__submit');
 const logout__button = document.getElementById('logout__button');
 let category__selected = "jsSnippets";
 
+// listener for login status 
 auth.onAuthStateChanged(user => {
     if(user){   
                 output.innerHTML = '';
@@ -35,6 +36,7 @@ auth.onAuthStateChanged(user => {
                 console.log(user);
     }
 })
+
 // open input for snippet
 
 add__button.addEventListener('click', e=>{
@@ -55,7 +57,7 @@ login__form.addEventListener('submit', e=>{
 		const password = login__form.user__password.value;
         auth.signInWithEmailAndPassword(email, password);
         login__form.classList.add('login__form--hide');
-		login__form.reset();
+        login__form.reset();
 })
 // logout button
 
@@ -94,6 +96,7 @@ navigation__list.addEventListener('click', e=>{
 
 db.collection(`data/codeSnippets/${category__selected}/`).orderBy('description').onSnapshot(snapshot=>{
     snapshot.docChanges().forEach(e=>{
+        console.log(e.type);
         if(e.type === 'added'){
 
             const snippet = e.doc.data().code;
