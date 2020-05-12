@@ -1,0 +1,35 @@
+{
+  "name": "codeCheatSheet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack --config webpack.config.js",
+    "product": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/norbert-lukaszuk/codeCheatSheet.git"
+  },
+  "keywords": [],
+  "author": "Norbert Łukaszuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/norbert-lukaszuk/codeCheatSheet/issues"
+  },
+  "homepage": "https://github.com/norbert-lukaszuk/codeCheatSheet#readme",
+  "devDependencies": {
+    "css-loader": "^3.5.2",
+    "firebase": "^7.14.2",
+    "html-webpack-plugin": "^4.3.0",
+    "node-sass": "^4.14.0",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.4",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
+    "prismjs": "^1.20.0"
+  }
+}
