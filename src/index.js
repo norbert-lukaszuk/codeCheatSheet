@@ -2,10 +2,11 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firebase-firestore';
 import {initObject} from './assets/fb_init_obj';
+import {settings} from './assets/normalizeWhiteSpaceSettings';
 import Prism from 'prismjs';
 import './style.scss';
 Prism.highlightAll();
-
+Prism.plugins.NormalizeWhitespace.setDefaults(settings);
 const app = firebase.initializeApp(initObject);
 const db = firebase.firestore();
 const auth = firebase.auth();
@@ -94,6 +95,7 @@ navigation__list.addEventListener('click', e=>{
                       const description = e.doc.data().description;
                       output.innerHTML += `<h4 class="snippet__header">${description}</h4>`
                       const prism_el = document.createElement('pre');
+                      prism_el.classList.add('line-numbers');
                       const code = document.createElement('code');
                       code.className = lang;
                       code.innerText = snippet;
@@ -115,6 +117,7 @@ db.collection(`data/codeSnippets/${category__selected}/`).orderBy('description')
           const description = e.doc.data().description;
           output.innerHTML += `<h4 class="snippet__header">${description}</h4>`
           const prism_el = document.createElement('pre');
+          prism_el.classList.add('line-numbers');
           const code = document.createElement('code');
           code.className = 'language-js';
           code.innerText = snippet;
