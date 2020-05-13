@@ -4,7 +4,6 @@ import 'firebase/firebase-firestore';
 import {initObject} from './assets/fb_init_obj';
 import Prism from 'prismjs';
 import './style.scss';
-// import '../public/prism.css';
 Prism.highlightAll();
 
 const app = firebase.initializeApp(initObject);

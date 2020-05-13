@@ -18,13 +18,25 @@ module.exports={
     title: 'Calendar addon'
   }),
   
+  
 ],
-  module: {
-    rules: [
-      {
-        test: /\.scss$/i,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+module: {
+  rules: [
+    {
+      test: /\.js$/,
+      exclude: /(node_modules|bower_components)/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env'],
+          plugins: ['prismjs']
+        }
       }
-    ],
-  },
+    },
+    {
+      test: /\.scss$/i,
+      use: ['style-loader', 'css-loader', 'sass-loader'],
+    }
+  ]
+}
 }

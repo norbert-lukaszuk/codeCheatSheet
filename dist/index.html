@@ -1,4 +1,68 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="prism.css"><link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet"><script src="https://kit.fontawesome.com/420f196fe5.js" crossorigin="anonymous"></script><title>Java Script</title></head><body><i class="fas fa-power-off fa-2x logout" id="power__button"></i><div class="navigation__wraper" id="navigation__wraper"><nav class="navigation" id="navigation"><ul class="navigation__list" id="navigation__list"><li class="navigation__item" lang-id="language-git" snip-id="gitSnippets" id="navigation__item">GIT</li><li class="navigation__item" lang-id="language-js" snip-id="jsSnippets" id="navigation__item">JS</li><li class="navigation__item" lang-id="language-css" snip-id="cssSnippets" id="navigation__item">CSS</li><li class="navigation__item" lang-id="language-bash" snip-id="bashSnippets" id="navigation__item">BASH</li></ul></nav></div><div class="login__wraper" id="login__wraper"><form class="login__form login__form--hide" id="login__form"><input type="email" class="user__email" id="user__email" placeholder="Your email"> <input type="password" class="user__password" id="user__password" placeholder="Your password"> <input type="submit" class="login__submit" id="login__submit" value="Login"> <input type="button" class="logout__button" id="logout__button" value="Logout"></form></div><h1 class="main__header main__header--js" id="main__header">jsSnippets</h1><div class="input__wraper" id="input__wraper"><div class="category__wraper category__wraper--hide" id="category__wraper"><input type="radio" name="category" value="gitSnippets" id="category__git"> <label for="category__git">GIT</label> <input type="radio" name="category" value="jsSnippets" id="category__js"> <label for="category__js">JS</label> <input type="radio" name="category" value="cssSnippets" id="category__css"> <label for="category__css">CSS</label> <input type="radio" name="category" value="bashSnippets" id="category__bash"> <label for="category__bash">BASH</label></div><textarea name="input__textarea" class="input__textarea input__textarea--hide" id="description__textarea" cols="50" rows="3" placeholder="And short description here..."></textarea> <textarea name="input__textarea" class="input__textarea input__textarea--hide" id="input__textarea" cols="50" rows="20" placeholder="Put Your code here..."></textarea><div class="buttons__wraper" id="buttons__wraper"><button class="send__button send__button--hide" id="send__button"><i class="far fa-paper-plane fa-2x"></i>SEND</button> <button class="cancel__button cancel__button--hide" id="cancel__button"><i class="far fa-window-close fa-2x"></i> CANCEL</button></div></div><div class="output__container" id="output__container"></div><i class="fas fa-plus-circle fa-3x" id="add__button"></i><script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script><script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-auth.js"></script><script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script><script>// Your web app's Firebase configuration
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="prism.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/420f196fe5.js" crossorigin="anonymous"></script>
+    <title>Java Script</title>
+</head>
+<body>
+  <i class="fas fa-power-off fa-2x logout" id="power__button"></i>
+  <div class="navigation__wraper" id="navigation__wraper">
+    <nav class="navigation" id="navigation">
+      <ul class="navigation__list" id="navigation__list">
+        <li class="navigation__item" lang-id="language-git" snip-id="gitSnippets" id="navigation__item">GIT</li>
+        <li class="navigation__item" lang-id="language-js" snip-id="jsSnippets" id="navigation__item">JS</li>
+        <li class="navigation__item" lang-id="language-css" snip-id="cssSnippets" id="navigation__item">CSS</li>
+        <li class="navigation__item" lang-id="language-bash" snip-id="bashSnippets" id="navigation__item">BASH</li>
+      </ul>
+    </nav>
+  </div>
+  <div class="login__wraper" id="login__wraper">
+    <form class="login__form login__form--hide" id="login__form">
+      <input type="email" class="user__email" id="user__email" placeholder="Your email">
+      <input type="password" class="user__password" id="user__password" placeholder="Your password">
+      <input type="submit" class="login__submit" id="login__submit" value="Login">
+      <input type="button" class="logout__button" id="logout__button" value="Logout">
+
+    </form>
+  </div>
+  <h1 class="main__header main__header--js" id="main__header">jsSnippets</h1>
+  <div class="input__wraper" id="input__wraper">
+    <div class="category__wraper category__wraper--hide" id="category__wraper">
+      <input type="radio" name="category" value="gitSnippets" id="category__git">
+      <label for="category__git">GIT</label>
+      <input type="radio" name="category" value="jsSnippets"  id="category__js">
+      <label for="category__js">JS</label>
+      <input type="radio" name="category" value="cssSnippets"  id="category__css">
+      <label for="category__css">CSS</label>
+      <input type="radio" name="category" value="bashSnippets" id="category__bash">
+      <label for="category__bash">BASH</label>
+    </div>
+    <textarea name="input__textarea" class="input__textarea input__textarea--hide" id="description__textarea" cols="50" rows="3" placeholder="And short description here..."></textarea>
+    <textarea name="input__textarea" class="input__textarea input__textarea--hide" id="input__textarea" cols="50" rows="20" placeholder="Put Your code here..."></textarea>
+    <div class="buttons__wraper" id="buttons__wraper">
+      <button class="send__button send__button--hide" id="send__button"><i class="far fa-paper-plane fa-2x"></i>SEND</button>
+      <button class="cancel__button cancel__button--hide" id="cancel__button"><i class="far fa-window-close fa-2x"></i> CANCEL</button>
+    </div>
+  </div>
+  
+  <div class="output__container" id="output__container">
+    
+  </div>
+  <i class="fas fa-plus-circle fa-3x" id="add__button"></i>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyDzvO7xqa9bwmCF5fRwX3fcRMME7pjyOmk",
     authDomain: "codecheatsheet-7d13a.firebaseapp.com",
@@ -11,4 +75,9 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
-  const db = firebase.firestore();</script><script src="prism.js"></script><script src="main.js"></script></body></html>
+  const db = firebase.firestore();
+  
+</script>
+<!-- <script src="prism.js"></script> -->
+<script src="main.js"></script></body>
+</html>
