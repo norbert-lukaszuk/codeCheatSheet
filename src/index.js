@@ -5,7 +5,7 @@ import {initObject} from './assets/fb_init_obj';
 import {settings} from './assets/normalizeWhiteSpaceSettings';
 import Prism from 'prismjs';
 import './style.scss';
-Prism.highlightAll();
+// Prism.highlightAll();
 Prism.plugins.NormalizeWhitespace.setDefaults(settings);
 const app = firebase.initializeApp(initObject);
 const db = firebase.firestore();
@@ -35,7 +35,7 @@ auth.onAuthStateChanged(user => {
       login__form.user__password.style.display = 'none';
       login__form.login__submit.style.display = 'none';
               login__form.logout__button.style.display = 'block';
-              getCollection();
+              // getCollection();
               console.log(user);
     }
     else{

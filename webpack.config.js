@@ -10,7 +10,8 @@ module.exports={
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
-    port: 5000
+    port: 5000,
+    open: true
   },
   plugins: [
     new HtmlWebpackPlugin({
