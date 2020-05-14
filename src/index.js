@@ -1,17 +1,17 @@
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firebase-firestore';
-import {initObject} from './assets/fb_init_obj';
+import {initObject, dbDocChanges} from './assets/fb_init_obj';
 import {settings} from './assets/normalizeWhiteSpaceSettings';
 import Prism from 'prismjs';
 import './style.scss';
 // set prism plugin values
 Prism.plugins.NormalizeWhitespace.setDefaults(settings);
 
-const app = firebase.initializeApp(initObject);
-const db = firebase.firestore();
-const auth = firebase.auth();
-const output = document.getElementById("output__container");
+export const app = firebase.initializeApp(initObject);
+export const db = firebase.firestore();
+export const auth = firebase.auth();
+export const output = document.getElementById("output__container");
 const add__button = document.getElementById("add__button");
 const description__textarea = document.getElementById("description__textarea");
 const input__textarea = document.getElementById("input__textarea");
@@ -25,7 +25,7 @@ const power__button = document.getElementById('power__button');
 const login__form = document.getElementById('login__form');
 const login__submit = document.getElementById('login__submit');
 const logout__button = document.getElementById('logout__button');
-let category__selected = "jsSnippets";
+export let category__selected = "jsSnippets";
 
 // listener for login status 
 auth.onAuthStateChanged(user => {
@@ -36,25 +36,7 @@ auth.onAuthStateChanged(user => {
       login__form.user__password.style.display = 'none';
       login__form.login__submit.style.display = 'none';
       login__form.logout__button.style.display = 'block';
-      db.collection(`data/codeSnippets/${category__selected}/`).orderBy('description').onSnapshot(snapshot=>{
-        snapshot.docChanges().forEach(e=>{
-            console.log(e.type);
-            if(e.type === 'added'){
-                const snippet = e.doc.data().code;
-                const description = e.doc.data().description;
-                output.innerHTML += `<h4 class="snippet__header">${description}</h4>`
-                const prism_el = document.createElement('pre');
-                prism_el.classList.add('line-numbers');
-                const code = document.createElement('code');
-                code.className = 'language-js';
-                code.innerText = snippet;
-                prism_el.append(code);
-                output.append(prism_el);
-            }
-        })
-        Prism.highlightAll();
-      })
-              
+      dbDocChanges(category__selected);        
     }
     else{
       power__button.classList.replace('login','logout');
@@ -167,7 +149,6 @@ function getCollection() {
   db.collection(`data/codeSnippets/${category__selected}/`).orderBy('description').get()
   .then(snapshot=>{
       snapshot.docs.forEach(e=>{
-          console.log(e.data());
           const snippet = e.data().code;
           const description = e.data().description;
           output.innerHTML += `<h4 class="snippet__header">${description}</h4>`
@@ -182,5 +163,3 @@ function getCollection() {
       })
   })
 }
-auth.user.uid
-export {app, auth, db}
