@@ -5,8 +5,9 @@ import {initObject} from './assets/fb_init_obj';
 import {settings} from './assets/normalizeWhiteSpaceSettings';
 import Prism from 'prismjs';
 import './style.scss';
-// Prism.highlightAll();
+// set prism plugin values
 Prism.plugins.NormalizeWhitespace.setDefaults(settings);
+
 const app = firebase.initializeApp(initObject);
 const db = firebase.firestore();
 const auth = firebase.auth();
@@ -34,9 +35,26 @@ auth.onAuthStateChanged(user => {
       login__form.user__email.style.display = 'none';
       login__form.user__password.style.display = 'none';
       login__form.login__submit.style.display = 'none';
-              login__form.logout__button.style.display = 'block';
-              // getCollection();
-              console.log(user);
+      login__form.logout__button.style.display = 'block';
+      db.collection(`data/codeSnippets/${category__selected}/`).orderBy('description').onSnapshot(snapshot=>{
+        snapshot.docChanges().forEach(e=>{
+            console.log(e.type);
+            if(e.type === 'added'){
+                const snippet = e.doc.data().code;
+                const description = e.doc.data().description;
+                output.innerHTML += `<h4 class="snippet__header">${description}</h4>`
+                const prism_el = document.createElement('pre');
+                prism_el.classList.add('line-numbers');
+                const code = document.createElement('code');
+                code.className = 'language-js';
+                code.innerText = snippet;
+                prism_el.append(code);
+                output.append(prism_el);
+            }
+        })
+        Prism.highlightAll();
+      })
+              
     }
     else{
       power__button.classList.replace('login','logout');
@@ -87,46 +105,11 @@ navigation__list.addEventListener('click', e=>{
       const lang = e.target.getAttribute('lang-id');
       output.innerHTML = '';
       main__header.innerText = category__selected;
-      db.collection(`data/codeSnippets/${category__selected}/`).orderBy('description').onSnapshot(snapshot=>{
-              snapshot.docChanges().forEach(e=>{
-                  if(e.type === 'added'){
-          
-                      const snippet = e.doc.data().code;
-                      const description = e.doc.data().description;
-                      output.innerHTML += `<h4 class="snippet__header">${description}</h4>`
-                      const prism_el = document.createElement('pre');
-                      prism_el.classList.add('line-numbers');
-                      const code = document.createElement('code');
-                      code.className = lang;
-                      code.innerText = snippet;
-                      prism_el.append(code);
-                      output.append(prism_el);
-                  }
-              })
-              Prism.highlightAll();
-          })
+      getCollection();
+      
   }
 })
 
-db.collection(`data/codeSnippets/${category__selected}/`).orderBy('description').onSnapshot(snapshot=>{
-  snapshot.docChanges().forEach(e=>{
-      console.log(e.type);
-      if(e.type === 'added'){
-
-          const snippet = e.doc.data().code;
-          const description = e.doc.data().description;
-          output.innerHTML += `<h4 class="snippet__header">${description}</h4>`
-          const prism_el = document.createElement('pre');
-          prism_el.classList.add('line-numbers');
-          const code = document.createElement('code');
-          code.className = 'language-js';
-          code.innerText = snippet;
-          prism_el.append(code);
-          output.append(prism_el);
-      }
-  })
-  Prism.highlightAll();
-})
 
 // send procedure 
 send__button.addEventListener('click', e=>{
@@ -142,7 +125,6 @@ send__button.addEventListener('click', e=>{
 
   // sending to firestore
   db.collection(`data/codeSnippets/${category}/`).add({
-  // db.collection('data').doc('codeSnippets').collection(category).add({
       code: snippet,
       description: description
   })
@@ -154,18 +136,7 @@ cancel__button.addEventListener('click', e=>{
   toggleInput();
   
 })
-// check if the user is login
-// function isLogin(){
-//     if(auth.getUid()){
-//         console.log('user in');
-//         power__button.classList.add('login');
-//     }
-//     else if(!auth.getUid()){
-//         console.log('user out');
-//         // power__button.classList.remove('login');
-//     }
-// }
-// toggling whole visibility input function
+
 function toggleInput() {
   input__textarea.classList.toggle('input__textarea--hide');
   description__textarea.classList.toggle('input__textarea--hide');
@@ -178,6 +149,7 @@ function toggleInput() {
   // reset radio buttons in input
   category.forEach(e=>e.checked = false);
 }
+
 // check witch category radio input is selected
 function checkCategory(){
   let value; 
@@ -200,6 +172,7 @@ function getCollection() {
           const description = e.data().description;
           output.innerHTML += `<h4 class="snippet__header">${description}</h4>`
           const prism_el = document.createElement('pre');
+          prism_el.classList.add('line-numbers');
           const code = document.createElement('code');
           code.className = 'language-js';
           code.innerText = snippet;
@@ -209,4 +182,5 @@ function getCollection() {
       })
   })
 }
+auth.user.uid
 export {app, auth, db}
