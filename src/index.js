@@ -25,8 +25,9 @@ const power__button = document.getElementById('power__button');
 const login__form = document.getElementById('login__form');
 const login__submit = document.getElementById('login__submit');
 const logout__button = document.getElementById('logout__button');
-export let category__selected = "jsSnippets";
-
+export let category__selected = "cssSnippets";
+export let lang = "language-css";
+main__header.textContent = category__selected;
 // listener for login status 
 auth.onAuthStateChanged(user => {
   if(user){   
@@ -36,7 +37,7 @@ auth.onAuthStateChanged(user => {
       login__form.user__password.style.display = 'none';
       login__form.login__submit.style.display = 'none';
       login__form.logout__button.style.display = 'block';
-      dbDocChanges(category__selected);        
+      dbDocChanges(category__selected, lang);        
     }
     else{
       power__button.classList.replace('login','logout');
@@ -81,13 +82,14 @@ auth.signOut();
 
 navigation__list.addEventListener('click', e=>{
   if(e.target.tagName === 'LI'){
-      console.log(e.target.getAttribute('lang-id'));
-      console.log(e.target.getAttribute('snip-id'));
       category__selected = e.target.getAttribute('snip-id');
       const lang = e.target.getAttribute('lang-id');
       output.innerHTML = '';
       main__header.innerText = category__selected;
-      getCollection();
+      console.log(category__selected);
+      // getCollection();
+      console.log(lang);
+      dbDocChanges(category__selected, lang);
       
   }
 })

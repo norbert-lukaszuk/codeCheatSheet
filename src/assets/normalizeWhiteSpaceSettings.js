@@ -3,7 +3,7 @@ export const settings = {
 	// 'remove-indent': true,
 	'left-trim': true,
 	'right-trim': true,
-  'break-lines': 80,
+  'break-lines': 60,
 	// 'indent': 2,
 	// 'remove-initial-line-feed': false,
 	// 'tabs-to-spaces': 4,
