@@ -283,6 +283,12 @@ input[type="radio"]{
 .navigation__list--hidden{
   visibility: hidden;
 }
+.output__container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .section__header{
   /* font-size: 1.438rem; */
   border-bottom: 1px solid #f8f8f8;
@@ -305,7 +311,11 @@ input[type="radio"]{
   padding: 20px 0;
 }
 @media(max-width: 360px){
-  .codeBlock>pre.line-numbers{
+  .codeBlock{
+    width: 350px;
+
+  }
+  .codeBlock>pre{
     padding: 15px 8px;
     font-size: .75em;
   }

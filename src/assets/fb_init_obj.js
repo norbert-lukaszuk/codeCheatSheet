@@ -1,4 +1,4 @@
-import {category__selected,db,lang, output} from '../index';
+import {category__selected,db,lang, output, unsubscribe} from '../index';
 export const initObject={
   apiKey: "AIzaSyDzvO7xqa9bwmCF5fRwX3fcRMME7pjyOmk",
   authDomain: "codecheatsheet-7d13a.firebaseapp.com",
@@ -11,9 +11,8 @@ export const initObject={
 
 export function dbDocChanges(category__selected, lang){
   console.log(category__selected);
-  db.collection(`data/codeSnippets/${category__selected}/`).orderBy('description').onSnapshot(snapshot=>{
+ unsubscribe = db.collection(`data/codeSnippets/${category__selected}/`).orderBy('description').onSnapshot(snapshot=>{
     snapshot.docChanges().forEach(e=>{
-        console.log(e.type);
         if(e.type === 'added'){
             const snippet = e.doc.data().code;
             const description = e.doc.data().description;

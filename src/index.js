@@ -27,6 +27,7 @@ const login__submit = document.getElementById('login__submit');
 const logout__button = document.getElementById('logout__button');
 export let category__selected = "cssSnippets";
 export let lang = "language-css";
+export let unsubscribe;
 main__header.textContent = category__selected;
 // listener for login status 
 auth.onAuthStateChanged(user => {
@@ -89,7 +90,8 @@ navigation__list.addEventListener('click', e=>{
       console.log(category__selected);
       // getCollection();
       console.log(lang);
-      dbDocChanges(category__selected, lang);
+      unsubscribe;
+      unsubscribe = dbDocChanges(category__selected, lang);
       
   }
 })
